@@ -13,6 +13,7 @@ for character in parenthasis:
 if balanced:
     print('YES')
 else:
-    print('BLA')
+    print('BLABLABLAl')
+    print('')
 
 
