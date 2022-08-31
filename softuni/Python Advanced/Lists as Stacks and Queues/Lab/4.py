@@ -20,4 +20,4 @@ while not command =='End':
         line.append(command)
     command = input()
 
-print(f'{dispenser} liters leftyyyy')
+print(f'{dispenser} liters left')
