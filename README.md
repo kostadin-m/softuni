@@ -1,1 +1,1 @@
-                                                                       ALL EXCERSISES FROM SOFTUNI-ADVANCED/PYTHON
+ALL EXCERSISES FROM SOFTUNI-ADVANCED/PYTHON
