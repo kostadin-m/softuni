@@ -1,15 +1,15 @@
-n = input()
+n = int(input())
 stacked_numbers = []
 for _ in range(n):
     line = input().split()
-    if line[0] =='1':
+    command = line[0]
+    if command =='1':
         stacked_numbers.append(int(line[1]))
-    elif line[0] == '2':
-        if len(stacked_numbers) > 0:
-            stacked_numbers.pop()
-    elif line[0] == '3':
+    elif command == '2' and stacked_numbers:
+        stacked_numbers.pop()
+    elif command == '3'and stacked_numbers:
         print(max(stacked_numbers))
-    elif line[0] == '4':
+    elif command == '4' and stacked_numbers:
         print(min(stacked_numbers))
 while stacked_numbers:
     last = stacked_numbers.pop()

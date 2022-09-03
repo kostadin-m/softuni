@@ -14,10 +14,10 @@ while command != 'END':
         duration = duration_green_light
     
     
-        while cars:
+        while cars and duration > 0:
             car = cars.popleft()
-            if duration + free_window > len(car):
-                if duration > len(car):
+            if duration + free_window >= len(car):
+                if duration >= len(car):
                     duration -=len(car)
                     safe_count +=1
                 else:

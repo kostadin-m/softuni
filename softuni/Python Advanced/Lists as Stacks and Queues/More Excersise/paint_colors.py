@@ -30,8 +30,8 @@ while line:
        
     first = first[:-1]
     second = second[:-1]
+    
     if first:
-
         line.insert(int(len(line) // 2), first)
     if second:
         line.insert(int(len(line) // 2), second)
@@ -42,8 +42,8 @@ result = []
 for color in found_colors:
     if color in main_colors:
         result.append(color)
-
     else:
+        
         is_valid = True
         for required in needed_for_secondary[color]:
             if required not in found_colors:
