@@ -21,9 +21,6 @@ commands = {
     2 : two,
     3 : three,
 }
-
-
-
 for _ in range(n):
     line = deque(input().split())
     command = int(line.popleft())
