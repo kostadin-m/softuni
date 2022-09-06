@@ -19,7 +19,7 @@ for attempt in range(n):
         else:
             tank -= int(distance)
     if failed:
-        truck_tour.append(truck_tour.popleft())
+        truck_tour.rotate(-1)
     else:
         print(attempt)
         break
