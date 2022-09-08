@@ -37,7 +37,7 @@ for command in commands:
     else:
         player_row,player_col = next_row,next_col
     
-    for bunny in bunnies:
+    for bunny in bunnies:   
         bunny_row, bunny_col = [int(x) for x in bunny.split()]
         
         for i in range(bunny_row-1,bunny_row+2):
