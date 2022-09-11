@@ -30,12 +30,11 @@ while True:
     value = {}
     for row in range(size):
         for col in range(size):
-            if matrix[row][col] == '0':
-                continue
-            knight_row,knight_col = row,col
-            interfered_knights = check_movement()
-            if interfered_knights:
-                value[knight_row, knight_col] = interfered_knights
+            if matrix[row][col] == 'K':
+                knight_row,knight_col = row,col
+                interfered_knights = check_movement()
+                if interfered_knights:
+                    value[knight_row, knight_col] = interfered_knights
     if not value:
         break
     
