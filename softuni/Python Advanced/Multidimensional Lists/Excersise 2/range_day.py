@@ -10,6 +10,7 @@ shot_targets = []
 hit_targets = target_counter[0]
 
 
+
 def find_position():
     for row in range(5):
         if "A" in matrix[row]:
@@ -17,8 +18,10 @@ def find_position():
             matrix[row][col] = "."
             return row, col
 
+
 def is_inside(row,col):
     return 0 <= row < 5 and 0 <= col < 5
+
 
 
 def shoot():
@@ -60,8 +63,6 @@ for i in range(int(input())):
         shoot()
     if hit_targets == 0:
         break
-
-
 
 if hit_targets ==0:
     print(f'Training completed! All {target_counter[0]} targets hit.')
