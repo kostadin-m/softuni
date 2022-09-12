@@ -10,8 +10,6 @@ movement ={
     'right':[0,1], 'left':[0,-1]
 }
 
-
-
 def is_inside(row,col,size):
     return 0 <= row < size and 0 <= col < size
 
@@ -32,13 +30,10 @@ def check(row,col):
             presents -= 1
             count_nice_kids[0] -= 1
         elif matrix[row][col] =='C':
-            matrix[row][col] ='S'
             happy = True
         elif matrix[row][col] =='X' and happy:
             presents -=1
     matrix[row][col]='-'
-    if not happy:
-        matrix[row][col] ='S'
     return row,col
 
 
@@ -48,18 +43,17 @@ def happy_santa():
     for pair in movement.items():
             next_row,next_col = santa_row + pair[1][0],santa_col + pair[1][1]
             check(next_row,next_col)
-    matrix[santa_row][santa_col] = 'S'
+
+
 
 
 santa_row,santa_col = find_santa()
-
 
 while True:
     command = input()
     if command =='Christmas morning':
         break
     next_row,next_col = santa_row + movement[command][0],santa_col + movement[command][1]
-    matrix[santa_row][santa_col] = '-'
     santa_row,santa_col = check(next_row,next_col)
     
     if happy:
@@ -68,6 +62,8 @@ while True:
     if not presents:
         break
 
+
+matrix[santa_row][santa_col] ='S'
 
 if presents ==0 and count_nice_kids[0] >0:
     print(f'Santa ran out of presents!')
