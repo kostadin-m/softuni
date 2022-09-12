@@ -5,7 +5,6 @@ happy = False
 final_nice_kids = count_nice_kids[0]
 
 
-
 movement ={
     'up':[-1,0], 'down':[1,0],
     'right':[0,1], 'left':[0,-1]
@@ -29,44 +28,42 @@ def find_santa():
 def check(row,col):
     global happy,presents
     if is_inside(row,col,len(matrix)):
-        if matrix[next_row][next_col] =='V':
+        if matrix[row][col] =='V':
             presents -= 1
             count_nice_kids[0] -= 1
-            matrix[row][col] = '-'
         elif matrix[row][col] =='C':
+            matrix[row][col] ='S'
             happy = True
-        elif matrix[row][col] =='X':
-            matrix[row][col] = '-'
-    matrix[santa_row][santa_col]='-'
-    matrix[row][col] ='S'
+        elif matrix[row][col] =='X' and happy:
+            presents -=1
+    matrix[row][col]='-'
+    if not happy:
+        matrix[row][col] ='S'
     return row,col
 
 
 
-def happy_santa(present):
+def happy_santa():
+    global santa_row,santa_col
     for pair in movement.items():
             next_row,next_col = santa_row + pair[1][0],santa_col + pair[1][1]
-            if is_inside(next_row,next_col,len(matrix)):
-                if matrix[next_row][next_col] == 'V':
-                    present -=1
-                    matrix[next_row][next_col] ='-'
-                    count_nice_kids[0] -=1
-                elif matrix[next_row][next_col] == 'X':
-                    present -=1
-                    matrix[next_row][next_col] ='-'
-    return present
+            check(next_row,next_col)
+    matrix[santa_row][santa_col] = 'S'
 
 
 santa_row,santa_col = find_santa()
+
+
 while True:
     command = input()
     if command =='Christmas morning':
         break
     next_row,next_col = santa_row + movement[command][0],santa_col + movement[command][1]
+    matrix[santa_row][santa_col] = '-'
     santa_row,santa_col = check(next_row,next_col)
     
     if happy:
-        presents = happy_santa(presents)
+        happy_santa()
     
     if not presents:
         break
