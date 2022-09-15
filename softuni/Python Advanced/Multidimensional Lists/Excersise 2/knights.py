@@ -1,4 +1,5 @@
 size= int(input())
+matrix =[[int(x) for x in input().split()] for _ in range (size)]
 knight_position = set()
 matrix = []
 removed = 0
@@ -19,9 +20,7 @@ def check_movement():
     return knight
 
 
-
 for row in range(size):
-    matrix.append([str(x) for x in list(input())])
     for col in range(size):
         if matrix[row][col] == 'K':
             knight_position.add(f'{row} {col}')
