@@ -14,10 +14,15 @@ movement ={
     'left':[0,-1]
 }
 
+
+
+
+
 alice_row,alice_col = find_alice()
 matrix[alice_row][alice_col] ='*'
 
 while True:
+    
     command = input()
     next_row,next_col = alice_row + movement[command][0], alice_col + movement[command][1]
     if 0 > next_row or next_row >= size or 0> next_col or next_col >= size:
@@ -32,6 +37,7 @@ while True:
         won = True
         break
     alice_row,alice_col = next_row,next_col
+
 
 if won:
     print(f"She did it! She went to the party.")
