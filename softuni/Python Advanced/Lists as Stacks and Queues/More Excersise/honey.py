@@ -1,8 +1,10 @@
 from collections import deque
+
 bees = deque(int(i) for i in input().split())
 nectar = [int(i) for i in input().split()]
 operators = deque(input().split())
 honey = 0
+
 op = {'+': lambda x, y: x + y,
       '-': lambda x, y: x - y,
       '/': lambda x, y: x / y,

@@ -1,10 +1,9 @@
-n = int(input())
+elements_count = int(input())
 
-unique_chemicals = set()
+elements = set()
+for _ in range(elements_count):
+    how_many_elements = input().split()
+    for element in how_many_elements:
+        elements.add(element)
 
-for i in range(n):
-    command = input().split()
-    unique_chemicals.union(command)
-
-for x in unique_chemicals:
-    print(x)
+print("\n".join(elements))
