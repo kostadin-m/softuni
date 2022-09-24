@@ -27,6 +27,7 @@ def board_init_():
 
 
 def check(mapper,pos):
+    global counter
     try:
         position = mapper[pos]
     except KeyError:
@@ -34,6 +35,7 @@ def check(mapper,pos):
     board_row,board_col = position
     if board[board_row][board_col] == None :
         board[board_row][board_col] = current_player.sign
+        counter +=1
         show_board(board)
     else:
         print('Invalid position')
@@ -72,10 +74,6 @@ def check_winner(board):
 
 
 
-
-print(f'This is the numeration on the board:')
-print(f'| 1 | 2 | 3 |\n| 4 | 5 | 6 |\n| 7 | 8 | 9 | ')
-
 board_mapper = {1:[0,0],2:[0,1],3:[0,2],4:[1,0],5:[1,1],6:[1,2],7:[2,0],8:[2,1],9:[2,2],}
 
 
@@ -83,8 +81,13 @@ board = board_init_()
 first_player,second_player = read_player()
 print(f'{first_player.name} starts first! ')
 
+print(f'This is the numeration on the board:')
+print(f'| 1 | 2 | 3 |\n| 4 | 5 | 6 |\n| 7 | 8 | 9 | ')
+
 
 turn = 1
+counter = 0
+
 
 while True:
     current_player = first_player if turn % 2 != 0 else second_player
@@ -97,4 +100,7 @@ while True:
     else:
         print('Invalid position! Try again')
         continue
+    if counter == 9 and not check_winner(board):
+        print(f'Draw!')
+        quit()
     turn +=1

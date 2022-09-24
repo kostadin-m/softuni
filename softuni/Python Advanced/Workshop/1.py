@@ -1,7 +1,6 @@
 class FullCollumnError(Exception):
     pass
 
-
 def check_valid(col,played):
     return  played < col and  played >= 0
 
@@ -67,7 +66,7 @@ def script():
                 picked_col = int(input((f'Player {player_number}, please choose another collumn, this one is full: ')))
                 continue
             
-            if winner(matrix,last_row,last_col,player_number):
+            if winner(matrix,last_row,last_col,player_number): # If we won we check if the player wants to restart the program
                 print(f'The winner is player {player_number}')
                 reset = input('Restart? (y/n): ')
                 if reset =='y':
