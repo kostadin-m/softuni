@@ -1,14 +1,12 @@
 class MustContainAtSymbolError(Exception):
     pass
-
 class NameTooShortError(Exception):
     pass
-
 class InvalidDomainError(Exception):
     pass
 
-
 valid = ['.com', '.bg', '.org', '.net']
+
 while True:
     try:
         name,domain = input().split('@')
