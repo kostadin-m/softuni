@@ -17,7 +17,6 @@ def read_player():
         read_player()
 
 
-
 def board_init_():
     size = 3
     result = []
@@ -88,7 +87,6 @@ print(f'| 1 | 2 | 3 |\n| 4 | 5 | 6 |\n| 7 | 8 | 9 | ')
 turn = 1
 counter = 0
 
-
 while True:
     current_player = first_player if turn % 2 != 0 else second_player
     position = int(input((f'{current_player.name} choose a free position [1-9]')))
@@ -100,7 +98,7 @@ while True:
     else:
         print('Invalid position! Try again')
         continue
-    if counter == 9 and not check_winner(board):
+    if counter == (len(board) * len(board)) and not check_winner(board):
         print(f'Draw!')
         quit()
     turn +=1
