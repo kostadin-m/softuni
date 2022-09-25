@@ -1,15 +1,9 @@
 rows = int(input())
-col = rows 
-matrix = []
+matrix = [[int(x) for x in input().split(', ')]for _ in range(rows)]
 final  ={
     'primary':[],
     'secondary':[]
 }
-
-for i in range(rows):
-    row = [int(x) for x in input().split(', ')]
-    matrix.append(row)
-
 
 for i in range(rows):
     final['primary'].append(matrix[i][i])

@@ -1,7 +1,6 @@
 size= int(input())
-matrix =[[int(x) for x in input().split()] for _ in range (size)]
+matrix =[[x for x in input()] for _ in range (size)]
 knight_position = set()
-matrix = []
 removed = 0
 movement = {
     "up left": [-2, -1], "up right": [-2, 1], "down left": [2, -1], "down right": [2, 1],

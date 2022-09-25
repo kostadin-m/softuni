@@ -1,4 +1,4 @@
-matrix = []
+matrix =[]
 line = input().split('|')
 
 for i in reversed(line):

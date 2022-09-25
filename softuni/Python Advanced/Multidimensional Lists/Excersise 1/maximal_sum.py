@@ -1,16 +1,12 @@
 rows,col = [int(x) for x in input().split()]
 
-matrix = []
+matrix = [[int(x) for x in input().split()]for _ in range(rows)]
 
 final={
     'biggest': -2000,
     'row': 0,
     'col': 0
 }
-
-for i in range(rows):
-    row = [int(x) for x in input().split()]
-    matrix.append(row)
 
 for i in range(rows -2):
     for x in range(col -2):

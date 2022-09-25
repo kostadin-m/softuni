@@ -21,7 +21,6 @@ while chocolate and cups_of_milk and milkshakes < 5:
         chocolate.append(choco - 5)
         cups_of_milk.append(milk)
 
-
 if milkshakes == 5:
     print(f'Great! You made all the chocolate milkshakes needed!')
 else:

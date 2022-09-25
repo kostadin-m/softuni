@@ -4,11 +4,7 @@ def valid_input(row,col,rows,cols):
 
 rows,collumns = [int(x) for x  in input().split()]
 
-matrix=[]
-
-for i in range(rows):
-    matrix.append(input().split())
-
+matrix=[[str(x) for x in input().split()]for _ in range(rows)]
 
 while True:
     command = input().split()

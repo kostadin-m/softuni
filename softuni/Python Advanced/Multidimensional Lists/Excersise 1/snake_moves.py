@@ -1,5 +1,4 @@
 rows,collumns = [int(x) for x in input().split()]
-
 snake = input()
 idx = 0
 

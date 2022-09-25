@@ -10,7 +10,6 @@ op = {'+': lambda x, y: x + y,
       '/': lambda x, y: x / y,
       '*': lambda x, y: x * y,}
 
-
 while bees and nectar:
     bee = bees[0]
     nect = nectar.pop()
@@ -19,13 +18,13 @@ while bees and nectar:
     operator = operators.popleft()
     if operator == '/':
         if nect > 0:
-            honey += abs(op[operator](bees.popleft(),nect))
-        else:
-            continue
+            honey += abs(op[operator](bee,nect))
     else:
         honey += abs(op[operator](bee,nect))
-print(f'Total honey made: {honey}')
+    bees.popleft()
 
+
+print(f'Total honey made: {honey}')
 if bees:
     print(f'Bees left: {", ".join(str(x) for x in bees)}')
 if nectar:
