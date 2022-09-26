@@ -1,8 +1,3 @@
-op = {'+': lambda x, y: x + y,
-      '-': lambda x, y: x - y,
-      '/': lambda x, y: x//y,
-      '*': lambda x, y: x * y
-}
-num1, operator, num2 = input().split()
+from math_module.function import *
 
-print(f'{op[operator](int(num1), int(num2)):.2f}')
+print(math_operation(input().split()))
