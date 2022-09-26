@@ -7,16 +7,13 @@ size = int(input())
 matrix = [[str(x) for x in input().split()]for _ in range(size)]
 collected_tea = 0
 won = False
+
 movement ={
     'up':[-1,0],
     'down':[1,0],
     'right':[0,1],
     'left':[0,-1]
 }
-
-
-
-
 
 alice_row,alice_col = find_alice()
 matrix[alice_row][alice_col] ='*'
