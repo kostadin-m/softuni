@@ -6,8 +6,7 @@ USERS = 'db/users.txt'
 CREDENTIALS = 'db/user_credentials.txt'
 CURRENT_SESSION = 'db/session.txt'
 
-
-def render_main_screen(window, is_register=False):
+def render_main_screen(window, is_register=False,short_name = False):
     clear_screen(window)
     tk.Label(
         window,
@@ -47,38 +46,6 @@ def render_main_screen(window, is_register=False):
         ).grid(row=0, column=2)
 
 
-def check_login_info(window, user, pword):
-    with open(CREDENTIALS, 'r') as file:
-        data = file.readlines()
-        for line in data:
-            username, password = line.split(', ')
-            if user == username and password == pword:
-                with open(CURRENT_SESSION, 'w') as session:
-                    session.write(user)
-                render_products(window)
-
-
-def register(window, user, pword, first, last):
-    user_info ={
-        'username': user,
-        'password': pword,
-        'first_name': first,
-        'last_name': last}
-
-    if len(user) < 8:
-        tk.Label(
-            window,
-            text='Name is too short')
-
-    user_info.update({"products": []})
-    with open(USERS, 'a', newline='') as file:
-        file.write(json.dumps(user_info))
-        file.write('\n')
-    with open(CREDENTIALS, 'a', newline='')as file:
-        file.write(f"{user}, {pword}")
-    render_main_screen(window, is_register=True)
-
-
 def render_register_screen(window):
     clear_screen(window)
     tk.Label(
@@ -110,4 +77,35 @@ def render_register_screen(window):
         bg='black',
         fg='white',
         command=lambda: register(window, username.get(), password.get(), first_name.get(), last_name.get())).grid(row=5)
+
+def check_login_info(window, user, pword):
+    with open(CREDENTIALS, 'r') as file:
+        data = file.readlines()
+        for line in data:
+            username, password = line.strip().split(', ')
+            if user == username and password == pword:
+                with open(CURRENT_SESSION, 'w') as session:
+                    session.write(user)
+                    render_products(window)
+
+
+def register(window, user, pword, first, last):
+    user_info ={
+        'username': user,
+        'password': pword,
+        'first_name': first,
+        'last_name': last}
+
+    if len(user) < 8:
+        tk.Label(
+            window,
+            text='Name is too short').grid(row=0,column=2)
+    else:
+        user_info.update({"products": []})
+        with open(USERS, 'a', newline='') as file:
+            file.write(json.dumps(user_info))
+            file.write('\n')
+        with open(CREDENTIALS, 'a', newline='')as file:
+            file.write(f"{user}, {pword}\n")
+        render_main_screen(window, is_register=True)
 

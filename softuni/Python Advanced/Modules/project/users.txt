@@ -1,3 +1,0 @@
-{"username": "dinka4a", "password": "12345678", "first_name": "Kostadin", "last_name": "Madjerski", "products": []}
-{"username": "dinka4a", "password": "12345678", "first_name": "Koostaid", "last_name": "dadsaa", "products": []}
-{"username": "kostaidn", "password": "12345678", "first_name": "Kstadin", "last_name": "dada", "products": []}
