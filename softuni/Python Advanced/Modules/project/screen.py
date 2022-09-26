@@ -6,6 +6,7 @@ USERS = 'db/users.txt'
 CREDENTIALS = 'db/user_credentials.txt'
 CURRENT_SESSION = 'db/session.txt'
 
+
 def render_main_screen(window, is_register=False,short_name = False):
     clear_screen(window)
     tk.Label(
@@ -26,8 +27,12 @@ def render_main_screen(window, is_register=False,short_name = False):
               bg='green',
               command=lambda: check_login_info(window, username.get(), password.get())
               ).grid(row=2, column=0)
-
-    if not is_register:
+    if is_register:
+        tk.Label(
+            window,
+            text="Thanks for creating account"
+        ).grid(row=0, column=2)
+    else:
         tk.Label(
             window,
             text="Don't have an account yet?"
@@ -39,7 +44,6 @@ def render_main_screen(window, is_register=False,short_name = False):
             fg='white',
             command=lambda: render_register_screen(window)
         ).grid(row=1, column=2)
-    else:
         tk.Label(
             window,
             text="Thanks for creating account"
@@ -77,6 +81,7 @@ def render_register_screen(window):
         bg='black',
         fg='white',
         command=lambda: register(window, username.get(), password.get(), first_name.get(), last_name.get())).grid(row=5)
+
 
 def check_login_info(window, user, pword):
     with open(CREDENTIALS, 'r') as file:
