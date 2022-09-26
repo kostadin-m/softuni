@@ -7,9 +7,10 @@ def valid_index(row,col):
         return row,col +1
     if command == 'left':
         return row,col-1
+
+
 def check_index():
     global coal_counter
-
     if matrix[miner_row][miner_col] =='*':
         pass
     elif matrix[miner_row][miner_col] == 'c':
@@ -19,8 +20,10 @@ def check_index():
         return True
     elif matrix[miner_row][miner_col] == 'e':
         return True
+
+
 n = int(input())
-commands= input().split()
+commands = input().split()
 
 coal_counter = 0
 matrix = []
@@ -35,9 +38,10 @@ for rows in range(n):
         el = row[coll]
         if el == 's':
             miner_row = rows
-            miner_col= coll
+            miner_col = coll
+
 for command in commands:
-    next_row,next_col = valid_index(miner_row,miner_col)
+    next_row, next_col = valid_index(miner_row,miner_col)
     if next_row< 0 or next_row >= n or next_col< 0 or next_col >= n:
         continue
     miner_row = next_row
