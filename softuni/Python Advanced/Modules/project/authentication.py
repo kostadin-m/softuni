@@ -67,17 +67,6 @@ def render_register_screen(window):
                                        first_name.get(), last_name.get())).grid(row=5)
 
 
-def check_login_info(window, user, pword):
-    with open(CREDENTIALS, 'r') as file:
-        data = file.readlines()
-        for line in data:
-            username, password = line.strip().split(', ')
-            if user == username and password == pword:
-                with open(CURRENT_SESSION, 'w') as session:
-                    session.write(user)
-                    render_products(window)
-
-
 def register(window, username, pword, first, last, taken_name=False):
     with open(USERS) as file:
         for user_line in file:
@@ -103,3 +92,14 @@ def register(window, username, pword, first, last, taken_name=False):
         with open(CREDENTIALS, 'a', newline='') as file:
             file.write(f"{username}, {pword}\n")
         render_main_screen(window, is_register=True)
+
+
+def check_login_info(window, user, pword):
+    with open(CREDENTIALS, 'r') as file:
+        data = file.readlines()
+        for line in data:
+            username, password = line.strip().split(', ')
+            if user == username and password == pword:
+                with open(CURRENT_SESSION, 'w') as session:
+                    session.write(user)
+                    render_products(window)
