@@ -56,7 +56,7 @@ def render_products(window, admin=False):
             bg='black',
             fg='white').place(x=430, y=20)
 
-        tk.Label(window,text='Welcome admin').place(x=450, y=0)
+        tk.Label(window, text='Welcome admin').place(x=450, y=0)
     else:
         tk.Label(window, text='Welcome user').place(x=450, y=0)
 

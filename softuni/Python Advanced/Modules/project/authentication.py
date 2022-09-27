@@ -8,7 +8,7 @@ CREDENTIALS = 'db/user_credentials.txt'
 CURRENT_SESSION = 'db/session.txt'
 
 
-def render_main_screen(window, is_register=False):
+def render_main_screen(window, is_register=False,correct_name_pwrod=False):
     clear_screen(window)
 
     tk.Label(window, text='Username').grid(row=0)
@@ -100,3 +100,6 @@ def check_login_info(window, user, pword):
                 with open(CURRENT_SESSION, 'w') as session:
                     session.write(user)
                 render_products(window)
+            else:
+                tk.Label(window, text="Wrong password").grid(row=2, column=1)
+

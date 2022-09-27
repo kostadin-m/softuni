@@ -1,6 +1,6 @@
-with open('db/admins.txt') as admins, open('db/session.txt') as current:
-    current_user = current.readline()
-    list_of_admins = admins.readlines()
-    for line in list_of_admins:
-        if current_user == line.strip():
-            admin = True
+with open('db/user_credentials.txt', 'r') as file:
+    data = file.readlines()
+    for line in data:
+        username, password = line.strip().split(', ')
+        if 'kostadin' == username and password == '12345678':
+            continue
