@@ -1,0 +1,3 @@
+{"id": 1, "name": "Hellsing", "img_path": "hellsing.png", "count": 48}
+{"id": 2, "name": "Black Clover", "img_path": "black_clover.png", "count": 44}
+{"id": 3, "name": "Naruto", "img_path": "naruto.png", "count": 69}

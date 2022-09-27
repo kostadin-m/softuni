@@ -38,7 +38,6 @@ def render_main_screen(window, is_register=False):
         ).grid(row=1, column=2)
 
 
-
 def render_register_screen(window):
     clear_screen(window)
     tk.Label(window, text='Username', ).grid(row=0)
@@ -100,4 +99,4 @@ def check_login_info(window, user, pword):
             if user == username and password == pword:
                 with open(CURRENT_SESSION, 'w') as session:
                     session.write(user)
-                    render_products(window)
+                render_products(window)
