@@ -80,14 +80,14 @@ def register(window, username, pword, first, last, taken_name=False):
             'username': username,
             'password': pword,
             'first_name': first,
-            'last_name': last
+            'last_name': last,
         }
         user_info.update({"products": []})
         with open(USERS, 'a', newline='') as file:
             file.write(json.dumps(user_info))
             file.write('\n')
         with open(CREDENTIALS, 'a', newline='') as file:
-            file.write(f"{username}, {pword}\n")
+            file.write(f"{username}, {pword}")
         render_main_screen(window, is_register=True)
 
 
@@ -101,5 +101,5 @@ def check_login_info(window, user, pword):
                     session.write(user)
                 render_products(window)
             else:
-                tk.Label(window, text="Wrong password").grid(row=2, column=1)
+                tk.Label(window, text="Wrong username or  password").grid(row=2, column=1)
 

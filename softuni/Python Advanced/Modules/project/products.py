@@ -30,7 +30,7 @@ def render_products(window, admin=False):
             if col == max:
                 row = 0
                 col = 0
-                row += 1
+                row += 4
 
             tk.Label(window, text=product['name'],).grid(row=row+1, column=col, pady=2)
 
@@ -45,18 +45,22 @@ def render_products(window, admin=False):
 
             tk.Label(window, text=product['count']).grid(row=row+3, column=col)
 
-            button = tk.Button(window, text=f'Buy {product["id"]}')
+            button = tk.Button(window, text=f'Buy {product["id"]}', bg='green')
             button.configure(command=lambda b=button: buy_product(window, b))
             button.grid(row=row+4, column=col)
             col += 1
     if admin:
-        tk.Button(
+        admin_button = tk.Button(
             window,
             text='Add new products',
             bg='black',
-            fg='white').place(x=430, y=20)
+            fg='white',
+            command=lambda: add_product(window,admin_button,admin_label),
+        )
+        admin_button.place(x=430, y=20)
 
-        tk.Label(window, text='Welcome admin').place(x=450, y=0)
+        admin_label = tk.Label(window, text='Welcome admin')
+        admin_label.place(x=450, y=0)
     else:
         tk.Label(window, text='Welcome user').place(x=450, y=0)
 
@@ -89,6 +93,39 @@ def update_product_quantity(product_id):
             file.write(json.dumps(current_products) + "\n")
 
 
-def add_product(window):
-    pass
+def add_product(window, b, l):
+    clear_screen(window)
+    b.destroy()
+    l.destroy()
 
+    tk.Label(window, text='Product Name').grid(row=0,column=0)
+    product_name = tk.Entry()
+    product_name.grid(row=0, column=1)
+
+    tk.Label(window, text='Product picture name').grid(row=1, column=0)
+    picture_name = tk.Entry()
+    picture_name.grid(row=1,column=1)
+
+    tk.Label(window, text='Quantity').grid(row=2, column=0)
+    quantity = tk.Entry()
+    quantity.grid(row=2,column=1)
+
+    tk.Button(
+        window, text='Add',
+        bg='black',
+        fg='white',
+        command=lambda: update_products(window, product_name.get(),
+                                        picture_name.get(), quantity.get())).grid(row=3, column=0)
+
+
+def update_products(window, name, pic_name, count):
+    with open(PRODUCTS, 'r+', newline='\n') as products:
+        product = products.readlines()
+        product_obj= {
+            'id': len(product) + 1,
+            'name': name,
+            'img_path': pic_name,
+            'count': int(count)
+        }
+        products.write(json.dumps(product_obj))
+    render_products(window)

@@ -1,3 +1,5 @@
 {"id": 1, "name": "Hellsing", "img_path": "hellsing.png", "count": 48}
 {"id": 2, "name": "Black Clover", "img_path": "black_clover.png", "count": 44}
 {"id": 3, "name": "Naruto", "img_path": "naruto.png", "count": 69}
+{"id": 4, "name": "Death Note", "img_path": "death_note.png", "count": 30}
+{"id": 5, "name": "Code Geass", "img_path": "code_geass.png", "count": 20}
