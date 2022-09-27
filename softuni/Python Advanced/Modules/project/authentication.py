@@ -10,6 +10,7 @@ CURRENT_SESSION = 'db/session.txt'
 
 def render_main_screen(window, is_register=False):
     clear_screen(window)
+
     tk.Label(window, text='Username').grid(row=0)
     username = tk.Entry()
     username.grid(row=0, column=1)
@@ -23,11 +24,11 @@ def render_main_screen(window, is_register=False):
               bg='green',
               command=lambda: check_login_info(window, username.get(), password.get())
               ).grid(row=2, column=0)
+
     if is_register:
         tk.Label(window, text="Thanks for creating account").grid(row=0, column=2)
     else:
         tk.Label(window, text="Don't have an account yet?").grid(row=0, column=2)
-
         tk.Button(
             window,
             text='Register',
@@ -35,10 +36,7 @@ def render_main_screen(window, is_register=False):
             fg='white',
             command=lambda: render_register_screen(window)
         ).grid(row=1, column=2)
-        tk.Label(
-            window,
-            text="Thanks for creating account"
-        ).grid(row=0, column=2)
+
 
 
 def render_register_screen(window):
