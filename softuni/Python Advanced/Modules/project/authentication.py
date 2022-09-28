@@ -99,7 +99,8 @@ def check_login_info(window, user, pword):
             if user == username and password == pword:
                 with open(CURRENT_SESSION, 'w') as session:
                     session.write(user)
-                render_products(window)
+                return render_products(window)
+
             else:
                 tk.Label(window, text="Wrong username or  password").grid(row=2, column=1)
 
