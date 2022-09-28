@@ -8,7 +8,7 @@ CREDENTIALS = 'db/user_credentials.txt'
 CURRENT_SESSION = 'db/session.txt'
 
 
-def render_main_screen(window, is_register=False,correct_name_pwrod=False):
+def render_main_screen(window, is_register=False, correct_name_pwrod=False):
     clear_screen(window)
 
     tk.Label(window, text='Username').grid(row=0)
@@ -60,11 +60,11 @@ def render_register_screen(window):
     tk.Button(window, text='Register',
               bg='black',
               fg='white',
-              command=lambda: register(window, username.get(), password.get(),
-                                       first_name.get(), last_name.get())).grid(row=5)
+              command=lambda: check_register_info(window, username.get(), password.get(),
+                                                  first_name.get(), last_name.get())).grid(row=5)
 
 
-def register(window, username, pword, first, last, taken_name=False):
+def check_register_info(window, username, pword, first, last, taken_name=False):
     with open(USERS) as file:
         for user_line in file:
             user = json.loads(user_line.strip())
@@ -100,7 +100,5 @@ def check_login_info(window, user, pword):
                 with open(CURRENT_SESSION, 'w') as session:
                     session.write(user)
                 return render_products(window)
-
             else:
                 tk.Label(window, text="Wrong username or  password").grid(row=2, column=1)
-

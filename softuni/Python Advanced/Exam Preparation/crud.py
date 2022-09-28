@@ -26,5 +26,6 @@ while True:
         elif command == 'Delete':
             if matrix[row][col] != '.':
                 matrix[row][col] = '.'
+
 for i in matrix:
     print(*i, sep=' ')
