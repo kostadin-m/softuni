@@ -7,14 +7,14 @@ class Trainer:
         self.pokemons = []
 
     def add_pokemon(self, pokemon):
-        if pokemon.name in [x.name for x in self.pokemons]:
+        if pokemon.guild_name in [x.guild_name for x in self.pokemons]:
             return f'This pokemon is already caught'
         self.pokemons.append(pokemon)
         return f'Caught {pokemon.pokemon_details()}'
 
     def release_pokemon(self, pokemon):
         for index, value in enumerate(self.pokemons):
-            if value.name == pokemon:
+            if value.guild_name == pokemon:
                 self.pokemons.pop(index)
             return f'You have released {pokemon}'
         return 'Pokemon is not caught'
