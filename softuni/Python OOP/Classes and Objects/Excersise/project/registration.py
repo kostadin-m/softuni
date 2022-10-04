@@ -1,16 +1,19 @@
-class Registration:
+from .user import User
+from .library import Library
 
-    def add_user(self, user, library):
+
+class Registration:
+    def add_user(self, user: User, library: Library):
         if user in library.user_records:
             return f"User with id = {user.user_id} already registered in the library!"
         return library.user_records.append(user)
 
-    def remove_user(self, user, library):
+    def remove_user(self, user: User, library: Library):
         if user not in library.user_records:
             return "We could not find such user to remove!"
         return library.user_records.remove(user)
 
-    def change_username(self, id: int, new_username,library):
+    def change_username(self, id: int, new_username, library: Library):
         for x in library.user_records:
             if x.user_id == id:
                 if x.username == new_username:
