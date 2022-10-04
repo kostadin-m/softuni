@@ -22,11 +22,11 @@ class Album:
         if self.published:
             return f"Cannot remove songs. Album is published."
         song_is_on_album = self.contains_song(song)
-        if song_is_on_album:
-            self.songs.remove(song_is_on_album)
-            return f"Removed song {song} from album {self.name}."
+        if not song_is_on_album:
+            return "Song is not in the album."
 
-        return "Song is not in the album."
+        self.songs.remove(song_is_on_album)
+        return f"Removed song {song} from album {self.name}."
 
     def publish(self):
         if self.published:

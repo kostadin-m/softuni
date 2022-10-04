@@ -9,19 +9,19 @@ class Band:
     def add_album(self, album: Album):
         album_existing = self.contains_album(album.name)
         if album_existing:
-            return f"Band {self.name} already has {album_existing.name} in their library."
+            return f"Band {self.name} already has {album.name} in their library."
         self.albums.append(album)
         return f"Band {self.name} has added their newest album {album.name}."
 
     def remove_album(self, album: str):
         album_in_albums = self.contains_album(album)
-        if album_in_albums:
-            if album_in_albums.published:
-                return f'Album has been published. It cannot be removed.'
+        if not album_in_albums:
+            return f"Album {album} is not found."
+        if album_in_albums.published:
+            return f'Album has been published. It cannot be removed.'
 
-            self.albums.remove(album_in_albums)
-            return f'Album {album} has been removed.'
-        return f"Album {album} is not found."
+        self.albums.remove(album_in_albums)
+        return f'Album {album} has been removed.'
 
     def details(self):
         return f"Band {self.name}\n" + '\n'.join([x.details() for x in self.albums])
