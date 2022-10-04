@@ -1,10 +1,13 @@
+from .song import Song
+
+
 class Album:
     def __init__(self, name, *args):
         self.name = name
         self.published = False
         self.songs = [x for x in args]
 
-    def add_song(self, song):
+    def add_song(self, song: Song):
         if self.published:
             return f"Cannot add songs. Album is published."
         if song.single:
@@ -15,7 +18,7 @@ class Album:
         self.songs.append(song)
         return f"Song {song.name} has been added to the album {self.name}."
 
-    def remove_song(self, song):
+    def remove_song(self, song: Song):
         if self.published:
             return f"Cannot remove songs. Album is published."
         for x in self.songs:

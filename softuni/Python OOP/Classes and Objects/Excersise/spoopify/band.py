@@ -1,9 +1,11 @@
+from .album import Album
+
 class Band:
     def __init__(self, name: str, ):
         self.name = name
         self.albums = []
 
-    def add_album(self, album):
+    def add_album(self, album: Album):
         if album in self.albums:
             return f"Band {self.name} already has {album.name} in their library."
         self.albums.append(album)
