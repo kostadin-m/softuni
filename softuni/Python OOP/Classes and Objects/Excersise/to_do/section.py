@@ -11,7 +11,7 @@ class Section:
 
     def complete_task(self, check_task):
         for x in self.tasks:
-            if x.guild_name == check_task:
+            if x.name == check_task:
                 x.completed = True
                 return f"Completed task {check_task}"
         return f"Could not find task with the name {check_task}"
