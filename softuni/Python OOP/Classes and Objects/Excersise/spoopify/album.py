@@ -21,13 +21,12 @@ class Album:
     def remove_song(self, song: str):
         if self.published:
             return f"Cannot remove songs. Album is published."
-        if not self.contains_song(song):
-            return "Song is not in the album."
+        song_is_on_album = self.contains_song(song)
+        if song_is_on_album:
+            self.songs.remove(song_is_on_album)
+            return f"Removed song {song} from album {self.name}."
 
-        for x in self.songs:
-            if x.name == song:
-                self.songs.remove(x)
-                return f"Removed song {song} from album {self.name}."
+        return "Song is not in the album."
 
     def publish(self):
         if self.published:
@@ -42,5 +41,5 @@ class Album:
     def contains_song(self, song: str):
         for x in self.songs:
             if x.name == song:
-                return True
+                return x
         return False
