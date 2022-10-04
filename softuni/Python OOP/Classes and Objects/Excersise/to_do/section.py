@@ -4,16 +4,16 @@ class Section:
         self.tasks = []
 
     def add_task(self, new_task):
-        if new_task not in self.tasks:
+        if not self.contains_task(new_task.name):
             self.tasks.append(new_task)
             return f"Task {new_task.details()} is added to the section"
         return f"Task is already in the section {self.name}"
 
     def complete_task(self, check_task):
-        for x in self.tasks:
-            if x.name == check_task:
-                x.completed = True
-                return f"Completed task {check_task}"
+        task_exist = self.contains_task(check_task)
+        if task_exist:
+            task_exist.completed = True
+            return f"Completed task {check_task}"
         return f"Could not find task with the name {check_task}"
 
     def clean_section(self):
@@ -26,3 +26,9 @@ class Section:
 
     def view_section(self):
         return f'Section {self.name}:\n' + '\n'.join([x.details() for x in self.tasks])
+
+    def contains_task(self, task: str):
+        for x in self.tasks:
+            if x.name == task:
+                return x
+        return False
