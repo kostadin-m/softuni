@@ -15,17 +15,16 @@ class Registration:
 
     def change_username(self, _id: int, new_username, library: Library):
         user_to_change = self.contains_user(_id, library.user_records)
-        if user_to_change:
-            if user_to_change.username == new_username:
-                return "Please check again the provided username " +\
+        if not user_to_change:
+            return f'There is no user with id = {_id}!'
+        if user_to_change.username == new_username:
+            return "Please check again the provided username " +\
                         "- it should be different than the username used so far!"
 
-            if user_to_change.username in library.rented_books.keys():
-                library.rented_books[new_username] = library.rented_books.pop(user_to_change.username)
-            user_to_change.username = new_username
-            return f"Username successfully changed to: {new_username} for user id: {_id}"
-
-        return f'There is no user with id = {_id}!'
+        if user_to_change.username in library.rented_books.keys():
+            library.rented_books[new_username] = library.rented_books.pop(user_to_change.username)
+        user_to_change.username = new_username
+        return f"Username successfully changed to: {new_username} for user id: {_id}"
 
     def contains_user(self, user: int, library):
         for x in library:
