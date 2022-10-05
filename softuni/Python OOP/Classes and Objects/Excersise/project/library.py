@@ -19,7 +19,7 @@ class Library:
             return f"{user.username} doesn't have this book in his/her records!"
         self.remove_from_user_books(user, book_name)
         self.add_to_available_books(author, book_name)
-        self.remove_from_rented_books(user.username,book_name)
+        self.remove_from_rented_books(user.username, book_name)
 
 
     def add_to_available_books(self, author, book):
