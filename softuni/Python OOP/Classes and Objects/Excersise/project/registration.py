@@ -18,8 +18,7 @@ class Registration:
         if not user_to_change:
             return f'There is no user with id = {_id}!'
         if user_to_change.username == new_username:
-            return "Please check again the provided username " +\
-                        "- it should be different than the username used so far!"
+            return "Please check again the provided username - it should be different than the username used so far!"
 
         if user_to_change.username in library.rented_books.keys():
             library.rented_books[new_username] = library.rented_books.pop(user_to_change.username)
