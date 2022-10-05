@@ -12,7 +12,8 @@ class Library:
             return f'The book "{book_name}" is already rented and will be available in {self.rented_books[user.username][book_name]} days!'
         self.add_to_user_books(user, book_name)
         self.remove_from_available_books(author, book_name)
-        self.add_to_rented_books(user.username, book_name, days_to_return)
+
+        return self.add_to_rented_books(user.username, book_name, days_to_return)
 
     def return_book(self, author: str, book_name: str, user: User):
         if book_name not in user.books:
