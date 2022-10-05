@@ -3,7 +3,7 @@ import re
 punctuation = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
 
 with open('text.txt') as file, open('output.txt','w') as output:
-    for row,line in enumerate(file):
+    for row, line in enumerate(file):
         words = line.strip()      
         
         counter_for_words = len(re.findall(r'[a-zA-Z]' ,words))
