@@ -1,3 +1,6 @@
+
+
+
 class ProductRepository:
     def __init__(self):
         self.products = []
@@ -7,9 +10,9 @@ class ProductRepository:
             self.products.append(product)
 
     def find(self, product):
-        x = [x for x in self.products if x.name == product]
-        if x:
-            return x[0]
+        for x in self.products:
+            if x.name == product:
+                return x
 
     def remove(self, product_name):
         product = self.find(product_name)
@@ -17,4 +20,4 @@ class ProductRepository:
             self.products.remove(product)
 
     def __repr__(self):
-        return '\n'.join([f"{x.name}: {x.quantity}" for x in self.products]).strip()
+        return '\n'.join([f"{x.name}: {x.quantity}" for x in self.products])
