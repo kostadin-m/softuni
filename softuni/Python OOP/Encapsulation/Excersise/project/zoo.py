@@ -58,9 +58,9 @@ class Zoo:
     def __result(self, obj_dict, type_list, type):
         result = f"You have {len(type_list)} {type}"
         for obj in type_list:
-            for obj_type in obj_dict.keys():
-                if obj.__class__.__name__ == obj_type:
-                    obj_dict[obj_type].append(obj)
+            obj_name = obj.__class__.__name__
+            if obj_name in obj_dict.keys():
+                obj_dict[obj_name].append(obj)
         for key, value in obj_dict.items():
             result += f"\n----- {len(value)} {key}s:\n"
             result += '\n'.join([repr(x) for x in value])
