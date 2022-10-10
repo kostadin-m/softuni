@@ -24,11 +24,12 @@ class Zoo:
 
 
     def fire_worker(self, worker_name):
-        x = [x for x in self.workers if x.name == worker_name]
-        if not x:
-            return f"There is no {worker_name} in the zoo"
-        self.workers.remove(x[0])
-        return f"{worker_name} fired successfully"
+        for x in self.workers:
+            if x.name == worker_name:
+                self.workers.remove(x[0])
+                return f"{worker_name} fired successfully"
+        return f"There is no {worker_name} in the zoo"
+
 
     def pay_workers(self):
         all_salaries = sum(x.salary for x in self.workers)
@@ -58,7 +59,7 @@ class Zoo:
     def __result(self, obj_dict, type_list, type):
         result = f"You have {len(type_list)} {type}"
         for obj in type_list:
-            obj_name = obj.__class__.__name__
+            obj_name = type(obj).__name__
             if obj_name in obj_dict.keys():
                 obj_dict[obj_name].append(obj)
         for key, value in obj_dict.items():
