@@ -1,5 +1,5 @@
 class Account:
-    def __init__(self,id,balance,pin):
+    def __init__(self, id, balance, pin):
         self.__id = id
         self.balance = balance
         self.__pin = pin
@@ -9,7 +9,7 @@ class Account:
             return 'Wrong pin'
         return self.__id
 
-    def change_pin(self,old,new):
+    def change_pin(self, old, new):
         if old != self.__pin:
             return 'Wrong pin'
         self.__pin = new
