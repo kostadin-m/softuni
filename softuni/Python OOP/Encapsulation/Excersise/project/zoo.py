@@ -12,7 +12,6 @@ class Zoo:
             return f"Not enough budget"
         if len(self.animals) == self.__animal_capacity:
             return f"Not enough space for animal"
-
         self.__budget -= animal_price
         self.animals.append(animal)
         return f"{animal.name} the {type(animal).__name__} added to the zoo"
@@ -28,7 +27,6 @@ class Zoo:
         x = [x for x in self.workers if x.name == worker_name]
         if not x:
             return f"There is no {worker_name} in the zoo"
-
         self.workers.remove(x[0])
         return f"{worker_name} fired successfully"
 
@@ -63,7 +61,6 @@ class Zoo:
             for obj_type in obj_dict.keys():
                 if obj.__class__.__name__ == obj_type:
                     obj_dict[obj_type].append(obj)
-
         for key, value in obj_dict.items():
             result += f"\n----- {len(value)} {key}s:\n"
             result += '\n'.join([repr(x) for x in value])
