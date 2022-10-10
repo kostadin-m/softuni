@@ -56,13 +56,13 @@ class Zoo:
         workers_dict = {'Keeper': [], 'Caretaker': [], 'Vet': []}
         return self.__result(workers_dict, self.workers, 'workers')
 
-    def __result(self, obj_dict, type_list, type):
+    def __result(self, type_dict, type_list, type):
         result = f"You have {len(type_list)} {type}"
         for obj in type_list:
             obj_name = type(obj).__name__
-            if obj_name in obj_dict.keys():
-                obj_dict[obj_name].append(obj)
-        for key, value in obj_dict.items():
+            if obj_name in type_dict.keys():
+                type_dict[obj_name].append(obj)
+        for key, value in type_dict.items():
             result += f"\n----- {len(value)} {key}s:\n"
             result += '\n'.join([repr(x) for x in value])
         return result
