@@ -26,7 +26,7 @@ class Zoo:
     def fire_worker(self, worker_name):
         for x in self.workers:
             if x.name == worker_name:
-                self.workers.remove(x[0])
+                self.workers.remove(x)
                 return f"{worker_name} fired successfully"
         return f"There is no {worker_name} in the zoo"
 
@@ -59,7 +59,7 @@ class Zoo:
     def __result(self, type_dict, type_list, type):
         result = f"You have {len(type_list)} {type}"
         for obj in type_list:
-            obj_name = type(obj).__name__
+            obj_name = obj.__class__.__name__
             if obj_name in type_dict.keys():
                 type_dict[obj_name].append(obj)
         for key, value in type_dict.items():
