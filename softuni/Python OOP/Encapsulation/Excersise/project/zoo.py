@@ -63,6 +63,6 @@ class Zoo:
             if class_name in type_dict.keys():
                 type_dict[class_name].append(obj)
         for key, value in type_dict.items():
-            result += f"\n----- {len(value)} {key}s:\n"
+            result += '\n' + f"----- {len(value)} {key}s:\n"
             result += '\n'.join([repr(x) for x in value])
         return result
