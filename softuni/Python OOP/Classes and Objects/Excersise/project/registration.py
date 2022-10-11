@@ -24,19 +24,23 @@ class Registration:
 
         return self.change_name(user_to_change, new_username, _id, library)
 
-    def contains_user(self, user: int, library):
+    @staticmethod
+    def contains_user(user: int, library):
         for x in library:
             if x.user_id == user:
                 return x
         return None
 
-    def add_to_user_records(self,records, user: User):
+    @staticmethod
+    def add_to_user_records(records, user: User):
         records.append(user)
 
-    def remove_from_user_records(self,records,user: User):
+    @staticmethod
+    def remove_from_user_records(records, user: User):
         records.remove(user)
 
-    def change_name(self, old, new ,_id,library):
+    @staticmethod
+    def change_name(old, new, _id, library):
         if old.username in library.rented_books.keys():
             library.rented_books[new] = library.rented_books.pop(old.username)
         old.username = new

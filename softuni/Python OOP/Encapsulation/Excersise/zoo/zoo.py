@@ -56,7 +56,8 @@ class Zoo:
         workers_dict = {'Keeper': [], 'Caretaker': [], 'Vet': []}
         return self.__result(workers_dict, self.workers, 'workers')
 
-    def __result(self, type_dict, type_list, type):
+    @staticmethod
+    def __result(type_dict, type_list, type):
         result = f"You have {len(type_list)} {type}"
         for obj in type_list:
             class_name = obj.__class__.__name__

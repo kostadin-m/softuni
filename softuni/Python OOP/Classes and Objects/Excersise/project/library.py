@@ -36,11 +36,13 @@ class Library:
         self.rented_books[name] = self.rented_books.get(name, {})
         self.rented_books[name].update({book: days_to_return})
 
-    def remove_from_rented_books(self,name,book):
+    def remove_from_rented_books(self, name, book):
         del self.rented_books[name][book]
 
-    def add_to_user_books(self, user, book):
+    @staticmethod
+    def add_to_user_books(user, book):
         user.books.append(book)
 
-    def remove_from_user_books(self,user,book):
+    @staticmethod
+    def remove_from_user_books(user, book):
         user.books.remove(book)
